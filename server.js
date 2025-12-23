@@ -1,22 +1,21 @@
 import express from 'express';
-import dotenv from 'dotenv';
-import { getFullUserData } from './core.js';
+import { getRandomUserData } from './core.js';
 
-dotenv.config();
 const app = express();
 const PORT = 3000;
 
-app.use(express.json());
 app.use(express.static('public'));
 
 app.get('/api/user', async (req, res) => {
     try {
-    const userData = await getFullUserData();
-    res.json(userData);
-} catch (error) {
+    const user = await getRandomUserData();
+    res.json(user);
+    } catch (error) {
     console.error(error);
-    res.status(500).json({ error: error.message });
-}
+    res.status(500).json({ error: 'Server error' });
+    }
 });
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => {
+    console.log(`Server running at http://localhost:${PORT}`);
+});
