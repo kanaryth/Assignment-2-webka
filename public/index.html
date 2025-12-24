@@ -1,25 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<link rel="stylesheet" href="style.css">
-<title>Random User</title>
+    <title>API Project</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>Random User Generator</h1>
+<h1>Random User Information</h1>
+<button id="btn">Get Random User</button>
 
-<button onclick="fetchUserData()">Get User</button>
-
-<div>
-    <img id="avatar" width="150" />
-    <p><strong>Name:</strong> <span id="name"></span></p>
-    <p><strong>Gender:</strong> <span id="gender"></span></p>
-    <p><strong>Age:</strong> <span id="age"></span></p>
-    <p><strong>Country:</strong> <span id="country"></span></p>
-    <p><strong>City:</strong> <span id="city"></span></p>
-    <p><strong>Address:</strong> <span id="address"></span></p>
-</div>
+<div id="user"></div>
+<div id="country"></div>
+<div id="exchange"></div>
+<div id="news"></div>
 
 <script src="script.js"></script>
 </body>
