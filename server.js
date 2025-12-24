@@ -7,7 +7,6 @@ app.use(express.static("public"))
 
 app.get("/api/user", async (req, res) => {
     try {
-        // 1️⃣ RANDOM USER
         const userRes = await axios.get("https://randomuser.me/api/")
         const user = userRes.data.results[0]
 
@@ -23,7 +22,6 @@ app.get("/api/user", async (req, res) => {
             picture: user.picture.large
         }
 
-        // 2️⃣ REST COUNTRIES
         const countryRes = await axios.get(
             `https://restcountries.com/v3.1/name/${userData.country}`
         )
@@ -37,7 +35,6 @@ app.get("/api/user", async (req, res) => {
             flag: country.flags.png
         }
 
-        // 3️⃣ EXCHANGE RATE
         const exchangeRes = await axios.get(
             `https://v6.exchangerate-api.com/v6/${process.env.EXCHANGE_API_KEY}/latest/${countryData.currency}`
         )
@@ -49,7 +46,6 @@ app.get("/api/user", async (req, res) => {
             kzt: rates["KZT"]
         }
 
-        // 4️⃣ NEWS
         const newsRes = await axios.get(
             `https://newsapi.org/v2/everything?q=${countryData.name}&language=en&pageSize=5&apiKey=${process.env.NEWS_API_KEY}`
         )
@@ -61,7 +57,6 @@ app.get("/api/user", async (req, res) => {
             url: n.url
         }))
 
-        // FINAL RESPONSE
         res.json({
             user: userData,
             country: countryData,
